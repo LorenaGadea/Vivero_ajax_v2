@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Plantarum</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/mainStyle.css">
+    <link rel="icon" type="image/png" href="../img/icon.png" sizes="16x16">
+    <script type="text/javascript" src="../jquery/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <style>
+
+    </style>
+</head>
+
+
+<body>
+    <div class="container-fluid" id="main">
+        <h2>Alquileres activos</h2>
+        <!--Inyección de listados-->
+        <div class="section">
+            <div id="listados">
+
+            </div>
+        </div>
+    </div>
+    <script>
+        $.get("PHP/listaAlquileresCliente.php", function (respuesta) {
+            console.log(respuesta);
+
+            creaTablaAlquileres(["Numero Alquiler",
+                "Código Producto",
+                "NIF",
+                "Apellido",
+                "Correo",
+                "Fecha Inicio",
+                "Fecha Final"], respuesta);
+
+        });
+        console.log(respuesta);
+        function creaTablaAlquileres(headers, xml) {
+            let tabla = document.createElement("table");
+            let header = tabla.createTHead();
+            let encabezados = header.insertRow(-1);
+            headers.forEach(encabezado => {
+                let celda = encabezados.insertCell(-1);
+                celda.textContent = encabezado;
+                encabezados.append(celda);
+            });
+            let cuerpo = document.createElement("tbody");
+            xml.querySelectorAll("alquiler").forEach(elem => {
+                let fila = cuerpo.insertRow(-1);
+                let celda = fila.insertCell(-1);
+                celda.append(elem.getAttribute("id"));
+                celda = fila.insertCell(-1);
+                celda.append(elem.querySelector("codigo").textContent);
+                celda = fila.insertCell(-1);
+                celda.append(elem.querySelector("nif").textContent);
+                celda = fila.insertCell(-1);
+                celda.append(elem.querySelector("apellido").textContent);
+                celda = fila.insertCell(-1);
+                celda.append(elem.querySelector("email").textContent);
+                celda = fila.insertCell(-1);
+                celda.append(elem.querySelector("fechaInicial").textContent);
+                celda = fila.insertCell(-1);
+                celda.append(elem.querySelector("fechaFinal").textContent);
+                celda = fila.insertCell(-1);
+            });
+            tabla.append(cuerpo);
+            $("#listados").appendChild(tabla);
+            return tabla;
+        }
+
+    </script>
+</body>
+
+</html>

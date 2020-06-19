@@ -1,0 +1,54 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+    font-weight: bold;
+}
+
+.titulo {
+    font-family: cursive;
+    font-size: 4em;
+    padding: 1%;
+    padding-left: 5%;
+    color:rgb(42, 51, 37);
+    font-weight: normal;
+}
+#opciones {
+    background-color: rgba(245, 245, 245, 0.459);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 10px;
+ }
+ legend {
+    font-size: 28px;
+}
+#formularios, #UD,#sesion{
+    background-color: rgba(245, 245, 245, 0.459);
+    color:black;
+    margin-top: 0;
+    padding: 5px;
+}
+
+#clientes, #tabla{
+    background-color: rgba(245, 245, 245, 0.759);
+    color:black;
+    margin-top: 0;
+    padding: 5px;
+}
+
+#sesion{
+    padding-left: 2%;
+}
+
+.btn:hover{
+    background-color: rgb(29, 56, 5)!important;
+    color: rgb(215, 240, 190);
+}
+
+
+#btnSesion:hover{
+    background-color:rgba(245, 245, 245, 0.459)!important;
+    color:  rgb(29, 56, 5);
+}
+
+
+

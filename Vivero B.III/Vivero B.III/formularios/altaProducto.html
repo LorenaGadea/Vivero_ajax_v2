@@ -1,0 +1,131 @@
+            <!--PRODUCTO-->
+            <div id="divFrmAltaProducto" class="col-12">
+                <form name="frmAltaProducto" id="frmAltaProducto">
+                    <h2>Nuevo producto</h2>
+                    <div class="form-row form-group">
+                        <div class="col-6">
+                            <label for="txtCodigo">Código</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="text" name="txtCodigo" id="txtCodigo" required>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col-6">
+                            <label for="txtPrecio">Precio (€)</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="number" min="0" step="0.01" name="txtPrecio"
+                                id="txtPrecio" required>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col-6">
+                            <label for="txtStock">Stock Inicial</label>
+                        </div>
+                        <div class="col-6">
+                            <input class="form-control" type="number" min="1" step="1" name="txtStock"
+                                id="txtStock" required>
+                        </div>
+                    </div>
+                    <div class="form-row form-group">
+                        <div class="col-6">
+                            <label for="selectTipo">Tipo de Producto</label>
+                        </div>
+                        <div class="col-6">
+                            <select class="form-control" name="selectTipo" id="selectTipo"
+                                onchange="changed_selectTipo();" required>
+                                <option selected>Seleccione</option>
+                                <option>Planta</option>
+                                <option>Maceta</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--TIPO PLANTA-->
+                    <div id="condPlanta" class="oculto">
+                        <div class="form-row form-group">
+                            <div class="col-6">
+                                <label for="txtNombre">Nombre</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="txtNombre" id="txtNombre">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col-6">
+                                <label for="selectTamaño">Tamaño</label>
+                            </div>
+                            <div class="col-6">
+                                <select class="form-control" name="selectTamaño" id="selectTamaño" required>
+                                    <option selected>Seleccione</option>
+                                    <option>Pequeño</option>
+                                    <option>Mediano</option>
+                                    <option>Grande</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="chkFlor" id="chkFlor">
+                                    <label class="form-check-label" for="chkFlor">Flor</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="chkFrutal" id="chkFrutal">
+                                    <label class="form-check-label" for="chkFrutal">Frutal</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--TIPO MACETA-->
+                    <div id="condMaceta" class="oculto">
+                        <div class="form-row form-group">
+                            <div class="col-6">
+                                <label for="txtColor">Color</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="txtColor" id="txtColor">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col-6">
+                                <label for="txtCapacidad">Capacidad (L)</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="number" min="0" step="0.5" name="txtCapacidad"
+                                    id="txtCapacidad">
+                            </div>
+                        </div>
+                        <div class="form-row form-group">
+                            <div class="col-6">
+                                <label for="txtMaterial">Material</label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-control" type="text" name="txtMaterial" id="txtMaterial">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <input class="btn btn-dark" type="button" value="Enviar" name="btnAltaProducto">
+                </form>
+                <script>
+                    // Ocultar/mostrar opciones del tipo de producto
+                    frmAltaProducto.selectTipo.selectedIndex = 0;
+                    function changed_selectTipo() {
+                        switch (frmAltaProducto.selectTipo.value) {
+                            case "Planta":
+                                document.getElementById("condPlanta").style.display = "block";
+                                document.getElementById("condMaceta").style.display = "none";
+                                break;
+                            case "Maceta":
+                                document.getElementById("condPlanta").style.display = "none";
+                                document.getElementById("condMaceta").style.display = "block";
+                                break;
+                            default:
+                                document.getElementById("condPlanta").style.display = "none";
+                                document.getElementById("condMaceta").style.display = "none";
+                        }
+                    }
+                </script>
+
+            </div>
